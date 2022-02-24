@@ -15,7 +15,7 @@ public class PrintAction {
         for (Block block : blocks) {
             printer.print(parseBlock(block));
         }
-        printer.print("\n\n\n");
+        printer.print("\n\n");
         printer.sendCommand(Commands.cutAndFeed(0));
         printer.flush();
         printer.disconnect();
