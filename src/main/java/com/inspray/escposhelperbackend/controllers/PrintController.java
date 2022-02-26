@@ -21,13 +21,10 @@ public class PrintController {
             int port = Integer.parseInt(printRequest.getPrinterUrl().split(":")[1]);
             PrintAction printAction = new PrintAction();
             printAction.print(printRequest.getBlocks(), address, port);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return new PrintResponse("print failed");
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return new PrintResponse("invalid port");
         }
-
         return new PrintResponse("ok");
     }
 
@@ -38,11 +35,9 @@ public class PrintController {
             int port = Integer.parseInt(settingRequest.getPrinterUrl().split(":")[1]);
             PrintAction printAction = new PrintAction();
             printAction.outputSettingsQR(address, port, settingRequest.getOrigin(), settingRequest.getPrinterUrl(), settingRequest.getServerUrl());
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return new PrintResponse("print failed");
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return new PrintResponse("invalid port");
         }
 
         return new PrintResponse("ok");
